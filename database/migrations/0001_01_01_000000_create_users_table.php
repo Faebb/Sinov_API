@@ -36,14 +36,14 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->unsignedBigInteger('id_user')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity');
 
             //Foreign Keys
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('user_id')->references('id_user')->on('users');
 
             //Índices
             $table->index('last_activity');
